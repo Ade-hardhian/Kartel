@@ -16,10 +16,17 @@ st.set_page_config(
 @st.cache_data
 
 # Create a connection object.
-conn = st.connection("https://docs.google.com/spreadsheets/d/1K9c8RuEmUI2yTrhZU1ZLEy2jSbjmStyFU5DNPkNTRpg/edit?usp=sharing", type=GSheetsConnection)
+conn = st.connection("streamlit_gsheets", type=GSheetsConnection)
 
 df = conn.read()
 
 # Print results.
 for row in df.itertuples():
     st.write(df)
+
+df = conn.read(
+    worksheet="Sheet1",
+    ttl="10m",
+    usecols=[0, 1],
+    nrows=3,
+)
