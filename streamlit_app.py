@@ -16,7 +16,7 @@ st.set_page_config(
 @st.cache_data
 
 # Create a connection object.
-conn = st.connection("gsheets", type=GSheetsConnection)
+conn = st.connection("https://docs.google.com/spreadsheets/d/1K9c8RuEmUI2yTrhZU1ZLEy2jSbjmStyFU5DNPkNTRpg/edit?usp=sharing", type=GSheetsConnection)
 
 df = conn.read()
 
